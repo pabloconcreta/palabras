@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palabras Aleatorias</title>
+</head>
+<body>
+  <h1 id="resultado"></h1>
+  <button id="nuevo">Elegir otra palabra</button>
+
+  <script>
+    // Array de palabras
+    const palabras = [
+      "amor", "casa", "perro", "gato", "libro", "escuela", "comida", "jardín", "sol", "noche",
+      "música", "familia", "amigo", "juego", "película", "pintura", "teatro", "ciudad", "cielo",
+      "montaña", "mar", "río", "bosque", "fiesta", "viaje", "trabajo", "relación", "historia",
+      "arte", "ciencia", "tecnología", "deporte", "cuerpo", "salud", "naturaleza", "animal",
+      "planta", "fruta", "verdura", "flor", "árbol", "libertad", "paz", "felicidad", "tristeza",
+      "miedo", "sueño", "esperanza", "fuerza", "valentía", "honestidad", "lealtad", "respeto",
+      "tolerancia", "solidaridad", "compasión", "gratitud", "sabiduría", "inteligencia", "creatividad",
+      "curiosidad", "paciencia", "perseverancia", "responsabilidad", "justicia", "igualdad", "libertad",
+      "democracia", "derecho", "ley", "educación", "conocimiento", "verdad", "realidad", "fantasía",
+      "imaginación", "aventura", "misterio", "intriga", "acción", "romance", "drama", "comedia",
+      "tragedia", "poesía", "literatura", "filosofía", "psicología", "sociología", "antropología",
+      "historia", "geografía", "política", "economía", "negocio", "empresa", "industria", "comercio",
+      "mercado", "dinero", "finanzas", "inversión", "ahorro", "gasto", "precio", "valor", "oferta",
+      "demanda", "producto", "servicio", "cliente", "consumidor", "proveedor", "vendedor", "compra",
+      "venta", "transacción", "intercambio", "contrato", "acuerdo", "negociación", "conflicto",
+      "cooperación", "competencia", "estrategia", "táctica", "planificación", "organización", "gestión",
+      "liderazgo", "equipo", "colaboración", "comunicación", "información", "datos", "red", "sistema",
+      "programa", "software", "hardware", "computadora", "internet", "web", "sitio", "aplicación",
+      "juego", "video", "imagen", "foto", "sonido", "música", "película", "serie", "documental",
+      "noticia", "artículo", "reportaje", "entrevista", "opinión", "comentario", "reseña", "crítica",
+      "debate", "discusión", "conversación", "diálogo", "charla", "conferencia", "taller", "seminario",
+      "curso", "clase", "lección", "tutorial", "guía", "manual", "instrucción", "enseñanza", "aprendizaje",
+      "entrenamiento", "práctica", "ejercicio", "deporte", "juego", "competición", "campeonato", "torneo",
+      "liga", "partido", "equipo", "jugador", "entrenador", "árbitro", "público", "aficionado", "espectador",
+      "hincha", "fan", "club", "asociación", "federación", "organización", "institución", "fundación"
+    ];
+
+    // Función para elegir una palabra al azar
+    function elegirPalabraAlAzar(array) {
+      const indiceAleatorio = Math.floor(Math.random() * array.length);
+      return array[indiceAleatorio];
+    }
+
+    // Función para elegir dos o tres letras consecutivas al azar de una palabra
+    function elegirLetrasConsecutivas(palabra) {
+      const longitud = palabra.length;
+      const cantidadLetras = Math.random() < 0.5 ? 2 : 3;
+      const inicioAleatorio = Math.floor(Math.random() * (longitud - cantidadLetras + 1));
+      return palabra.substring(inicioAleatorio, inicioAleatorio + cantidadLetras);
+    }
+
+    // Función para reemplazar los tildes por letras sin tilde
+    function reemplazarTildes(texto) {
+      const tildes = {
+        'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+        'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U'
+      };
+      return texto.replace(/[áéíóúÁÉÍÓÚ]/g, match => tildes[match]);
+    }
+
+    // Función para actualizar el contenido de la etiqueta h1
+    function actualizarResultado() {
+      const palabraAleatoria = elegirPalabraAlAzar(palabras);
+      console.log("Palabra elegida:", palabraAleatoria);
+
+      let letrasConsecutivas = elegirLetrasConsecutivas(palabraAleatoria);
+      console.log("Letras consecutivas elegidas:", letrasConsecutivas);
+
+      letrasConsecutivas = reemplazarTildes(letrasConsecutivas);
+      console.log("Letras consecutivas sin tildes:", letrasConsecutivas);
+
+      document.getElementById('resultado').innerText = letrasConsecutivas;
+    }
+
+    // Evento para el botón que elige otra palabra
+    document.getElementById('nuevo').addEventListener('click', actualizarResultado);
+
+    // Inicializar con una palabra al azar al cargar la página
+    actualizarResultado();
+  </script>
+</body>
+</html>
