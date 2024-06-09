@@ -4,10 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Palabras Aleatorias</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #contenido {
+      text-align: center;
+    }
+
+    h1 {
+        font-size: 50pt;
+    }
+    button {
+        font-size: 25pt;
+    }
+  </style>
 </head>
 <body>
-  <h1 id="resultado"></h1>
-  <button id="nuevo">Elegir otra palabra</button>
+  <div id="contenido">
+    <h1 id="resultado"></h1>
+    <button id="nuevo">Otra</button>
+  </div>
 
   <script>
     // Array de palabras
