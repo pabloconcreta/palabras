@@ -46,7 +46,7 @@
     // Función para elegir dos o tres letras consecutivas al azar de una palabra
     function elegirLetrasConsecutivas(palabra) {
       const longitud = palabra.length;
-      const cantidadLetras = Math.random() < 0.5 ? 2 : 3;
+      const cantidadLetras = 3;
       const inicioAleatorio = Math.floor(Math.random() * (longitud - cantidadLetras + 1));
       return palabra.substring(inicioAleatorio, inicioAleatorio + cantidadLetras);
     }
